@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="StoogeApp">
+  <head>
+    <title>Stooges</title>
+  </head>
+  <body ng-controller="StoogeController">
+    <h1>Stooges</h1>
+
+    <form ng-submit="addStooge()">
+      <input type="text" ng-model="stoogeName">
+      <input type="submit" value="Stooge Me!">
+    </form>
+    <ul>
+      <li ng-repeat="stooge in stooges">{{ stooge }}</li>
+    </ul>
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js"></script>
+
+    <script>
+      angular.module('StoogeApp', [])
+      .controller('StoogeController', function($scope){
+        $scope.stooges = ['Larry', 'Curly', 'Moe', 'Schemp'];
+
+        $scope.addStooge = function() {
+          $scope.stooges.push($scope.stoogeName);
+          $scope.stoogeName = '';
+        };
+      });
+    </script>
+  </body>
+</html>
